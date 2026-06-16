@@ -13,6 +13,8 @@ class MarcaController extends Controller
     public function index()
     {
         //
+        return 'index';
+
     }
 
     /**
@@ -20,7 +22,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        //
+        return 'create';
     }
 
     /**
@@ -28,7 +30,7 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        return 'ola seu store';
+        return json_encode($request);
     }
 
     /**
@@ -36,7 +38,7 @@ class MarcaController extends Controller
      */
     public function show(Marca $marca)
     {
-        //
+        return 'get';
     }
 
     /**
@@ -44,7 +46,7 @@ class MarcaController extends Controller
      */
     public function edit(Marca $marca)
     {
-        //
+        return 'edit';
     }
 
     /**

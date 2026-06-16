@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CarrosController;
+use App\Http\Controllers\LocacaoController;
+use App\Http\Controllers\MarcaController;
+use App\Http\Controllers\ModeloController;
 
 Route::get('/api', function () {
     return response()->json([
@@ -8,8 +13,8 @@ Route::get('/api', function () {
     ]);
 });
 
-Route::apiResource('cliente', 'ClienteController');
-Route::apiResource('carros', 'CarrosController');
-Route::apiResource('locacao', 'LocacaoController');
-Route::apiResource('marca', 'MarcaController');
-Route::apiResource('modelo', 'ModeloController');
+Route::apiResource('cliente', ClienteController::class);
+Route::apiResource('carros', CarrosController::class);
+Route::apiResource('locacao', LocacaoController::class);
+Route::apiResource('marca', MarcaController::class);
+Route::apiResource('modelo', ModeloController::class);
