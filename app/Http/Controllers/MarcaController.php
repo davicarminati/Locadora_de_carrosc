@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Marca;
 use Illuminate\Http\Request;
 
@@ -83,8 +84,6 @@ class MarcaController extends Controller
         if($request->method() === 'PATCH'){
 
             $regrasDinamicas = array();
-
-            $teste = '';
         
             foreach($marca->rules() as $input => $regra){
 
@@ -99,6 +98,10 @@ class MarcaController extends Controller
         else{
 
             $request->validate($marca->rules(), $marca->feedback());
+        }
+
+        if($request->file('imagem')) {
+            Storage::disk('public')->delete($marca->imagem);
         }
 
         $imagem = $request->file('imagem');
@@ -122,6 +125,9 @@ class MarcaController extends Controller
         if($marca === null){
             return response()->json(['erro' => 'Voce nao pode apagar um registro q nao existe meu caro'],404);
         }
+
+            Storage::disk('public')->delete($marca->imagem);
+
         
         $marca->delete();
         return response()->json(['msg' => 'A marca foi removida com sucesso'], 200);
