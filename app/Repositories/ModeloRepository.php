@@ -5,7 +5,7 @@ namespace App\Repositories;
 use Illuminate\DataBase\Eloquent\Model;
 
 
-class MarcaRepository {
+class ModeloRepository {
 
     public function __construct(Model $model) {
         $this->model = $model;
