@@ -69,7 +69,7 @@ class CarroController extends Controller
     {
         $carro = $this->carro->with('modelo')->find($id);
         if($carro === null) {
-            return response()->json(['erro' => 'Recurso pesquisado nao existe'], 404) ;        
+            return response()->json(['erro' => 'Recurso pesquisado nao existe'], 404);        
         }
         return response()->json($carro, 200);
     }
@@ -116,7 +116,6 @@ class CarroController extends Controller
 
 
         $carro->fill($request->all());
-
         $carro->save();
 
        return response()->json($carro, 200);
