@@ -48,7 +48,7 @@ class CarroController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCarrosRequest $request)
+    public function store(StoreCarroRequest $request)
     {
         $request->validate($this->carro->rules(), $this->carro->feedback());
 
@@ -77,7 +77,7 @@ class CarroController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Carros $carros)
+    public function edit(Carro $carro)
     {
         //
     }
@@ -85,7 +85,7 @@ class CarroController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCarrosRequest $request, Carros $carros, $id)
+    public function update(UpdateCarrosRequest $request, Carro $carro, $id)
     {
         $carro = $this->carro->find($id);
         if($carro === null) {
@@ -102,7 +102,6 @@ class CarroController extends Controller
                     $regrasDinamicas[$input] = $regra;
                 }
             }
-            dd($regrasDinamicas);
 
             $request->validate($regrasDinamicas->rules());
         }
@@ -126,7 +125,7 @@ class CarroController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Carros $carros, $id)
+    public function destroy(Carro $carro, $id)
     {
         
         $carro = $this->carro->find($id);
