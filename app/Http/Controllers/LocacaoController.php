@@ -51,15 +51,17 @@ class LocacaoController extends Controller
      */
     public function store(StoreLocacaoRequest $request)
     {
-        $request->validate($this->locacao->rules(), $this->locacao->feedback());
-
-
-        $imagem = $request->file('imagem');
-        $imagem_urn = $imagem->store('imagens', 'public');
+        $request->validate($this->locacao->rules());
 
         $locacao = $this->locacao->create([
-            'nome' => $request->nome,
-            'imagem' => $imagem_urn
+            'cliente_id' => $request->cliente_id,
+            'carro_id' => $request->carro_id,
+            'data_inicio_periodo' => $request->data_inicio_periodo,
+            'data_final_previsto_periodo' => $request->data_final_previsto_periodo,
+            'data_final_realizado_periodo' => $request->data_final_realizado_periodo,
+            'valor_diaria' => $request->valor_diaria,
+            'km_inicial' => $request->km_inicial,
+            'km_final'  => $request->km_final
         ]);
         
         return response()->json($locacao, 201);
