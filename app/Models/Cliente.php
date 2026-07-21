@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    /** @use HasFactory<\Database\Factories\ClienteFactory> */
-    use HasFactory;
+       use HasFactory;
+
+       private $fillable = ['nome'];
+
+       public function rules() {
+            return [
+               'nome' => 'required'
+            ];
+       }
+
 }
