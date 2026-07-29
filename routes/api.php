@@ -6,6 +6,7 @@ use App\Http\Controllers\CarrosController;
 use App\Http\Controllers\LocacaoController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\ModeloController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/api', function () {
     return response()->json([
@@ -18,3 +19,8 @@ Route::apiResource('carros', CarrosController::class);
 Route::apiResource('locacao', LocacaoController::class);
 Route::apiResource('marca', MarcaController::class);
 Route::apiResource('modelo', ModeloController::class);
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout']);
+Route::post('refresh', [AuthController::class, 'refresh']);
+Route::post('me', [AuthController::class, 'me']);                
