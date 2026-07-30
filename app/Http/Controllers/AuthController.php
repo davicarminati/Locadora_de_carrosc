@@ -6,8 +6,16 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function login(){
-        return 'login';
+    public function login(Request $request){
+        $credenciais = $request->all(['email', 'password']);
+        
+        $token = auth('api')->attempt($credenciais);
+        if($token) {
+            return response()->json(['token' => $token]);
+
+        } else {
+            return response()->json(['erro' => 'Usuario ou senha invalido!'],403);
+        }
     }
         public function logout(){
         return 'logout';
