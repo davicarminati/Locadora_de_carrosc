@@ -9,7 +9,7 @@ class Cliente extends Model
 {
        use HasFactory;
 
-       private $fillable = ['nome'];
+       protected $fillable = ['nome'];
 
        public function rules() {
             return [

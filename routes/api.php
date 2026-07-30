@@ -14,13 +14,13 @@ Route::get('/api', function () {
     ]);
 });
 
-Route::apiResource('cliente', ClienteController::class);
-Route::apiResource('carros', CarrosController::class);
-Route::apiResource('locacao', LocacaoController::class);
-Route::apiResource('marca', MarcaController::class);
-Route::apiResource('modelo', ModeloController::class);
+Route::apiResource('cliente', ClienteController::class)->middleware('jwt.auth');
+Route::apiResource('carros', CarrosController::class)->middleware('jwt.auth');
+Route::apiResource('locacao', LocacaoController::class)->middleware('jwt.auth');
+Route::apiResource('marca', MarcaController::class)->middleware('jwt.auth');
+Route::apiResource('modelo', ModeloController::class)->middleware('jwt.auth');
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
-Route::post('me', [AuthController::class, 'me']);                
+Route::post('me', [AuthController::class, 'me']);
